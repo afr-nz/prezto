@@ -30,5 +30,13 @@ export PATH="/Library/TeX/texbin:$PATH"
 export PATH="/Users/andrewfrater/dev/site/emacs/src:$PATH"
 
 # a slightly more modern emacs
-alias enw='/Users/andrewfrater/dev/site/emacs/lib-src/emacsclient -nw -c -a= $*'
 
+
+if [[ "$OSTYPE" == darwin* ]]; then
+   alias enw='/Users/andrewfrater/dev/site/emacs/lib-src/emacsclient -nw -c -a= $*'
+else
+   alias enw='emacsclient -nw -c -a= $*'
+fi
+
+GPG_TTY=$(tty)
+export GPG_TTY
